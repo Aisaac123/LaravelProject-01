@@ -1,0 +1,18 @@
+form .user_image {
+    width: 175px;
+    height: 185px;
+    object-fit: cover;
+    margin-left: 107px;
+    margin-bottom: 25px;
+    border-radius: 7%;
+    overflow: hidden;
+}
+
+.navbar .user_image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-left: 5px;
+}
