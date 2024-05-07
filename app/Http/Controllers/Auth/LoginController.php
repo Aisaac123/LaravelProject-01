@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,4 +38,25 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function username(): string
+    {
+        return 'nickname';
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        $username = $request->input('nickname');
+        $password = $request->input('password');
+
+        if (Auth::attempt(['nickname' => $username, 'password' => $password])) {
+            return true;
+        }
+
+        if (Auth::attempt(['email' => $username, 'password' => $password])) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

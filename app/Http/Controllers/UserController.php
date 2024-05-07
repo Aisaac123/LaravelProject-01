@@ -16,8 +16,8 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    public function config(){
-        return view('users.config');
+    public function profile(){
+        return view('users.profile');
     }
 
     public function update(Request $request)
@@ -55,7 +55,7 @@ class UserController extends Controller
         }
         $user->update();
         //redirect
-        return redirect()->route('config')->with(['message' => 'You\'r personal info has been updated! :)']);
+        return redirect()->route('user.profile')->with(['message' => 'You\'r personal info has been updated! :)']);
     }
 
     public function updatePassword(Request $request)
@@ -83,11 +83,12 @@ class UserController extends Controller
 
 
         $hashedNewPassword = Hash::make($newPassword);
+        assert($user !== null, "Cannot be a null user if is logged in");
 
         $user->password = $hashedNewPassword;
         $user->update();
 
-        return redirect()->route('config')->with(['message' => 'You\'r password has been updated! :)']);
+        return redirect()->route('user.profile')->with(['message' => 'You\'r password has been updated! :)']);
     }
 
     public function getImageFromStorage(string $filename){

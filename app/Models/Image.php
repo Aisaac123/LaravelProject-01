@@ -10,6 +10,8 @@ class Image extends Model
 {
     protected $table = 'images';
 
+    
+
     // One-to-Many Relation
 
     public function comments(): HasMany

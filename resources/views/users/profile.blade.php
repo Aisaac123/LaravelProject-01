@@ -10,16 +10,26 @@
                         </div>
                     @endif
                     <div class="card col mb-5 align-content-center">
-                        <div class="card-header align-content-center text-center"><strong>Edit Account Info</strong></div>
+                        <div class="card-header align-content-center text-center"><strong>Edit Account Info</strong>
+                        </div>
                         <div class="card-body pt-4">
-                            <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data" class="mt-3">
+                            <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data"
+                                  class="mt-3">
                                 @csrf
                                 <div class="row">
                                     <div class="col">
-                                        @include('includes.user_image')
+                                        @if(Auth::user()->image)
+                                            @component('components.profile_image', ['route' => route('user.image', ['filename' => Auth::user()->image])])
+                                            @endcomponent
+                                        @else
+                                            @component('components.profile_image', ['route' => "null"])
+                                            @endcomponent
+                                        @endif
                                         <div class="row mb-3">
-                                            <div class="col-md-9 ms-5 text-center align-content-center" >
-                                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" accept="image/*">
+                                            <div class="col-md-9 ms-5 text-center align-content-center">
+                                                <input id="image" type="file"
+                                                       class="form-control @error('image') is-invalid @enderror"
+                                                       name="image" accept="image/*">
                                                 @error('image')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -31,10 +41,14 @@
                                     <div class="col mt-3 me-4">
 
                                         <div class="row mb-3">
-                                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                                            <label for="name"
+                                                   class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                             <div class="col-md-7">
-                                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" required autocomplete="name" autofocus>
+                                                <input id="name" type="text"
+                                                       class="form-control @error('name') is-invalid @enderror"
+                                                       name="name" value="{{ Auth::user()->name }}" required
+                                                       autocomplete="name" autofocus>
 
                                                 @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -45,25 +59,33 @@
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('Surname') }}</label>
+                                            <label for="surname"
+                                                   class="col-md-4 col-form-label text-md-end">{{ __('Surname') }}</label>
 
                                             <div class="col-md-7">
-                                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ Auth::user()->surname }}" required autocomplete="surname" autofocus>
+                                                <input id="surname" type="text"
+                                                       class="form-control @error('surname') is-invalid @enderror"
+                                                       name="surname" value="{{ Auth::user()->surname }}" required
+                                                       autocomplete="surname" autofocus>
 
                                                 @error('surname')
                                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="nickname" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
+                                            <label for="nickname"
+                                                   class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
 
                                             <div class="col-md-7">
-                                                <input id="nickname" type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname"
-                                                       value="{{ Auth::user()->nickname }}" required autocomplete="nickname" autofocus>
+                                                <input id="nickname" type="text"
+                                                       class="form-control @error('nickname') is-invalid @enderror"
+                                                       name="nickname"
+                                                       value="{{ Auth::user()->nickname }}" required
+                                                       autocomplete="nickname" autofocus>
                                                 @error('nickname')
                                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -73,10 +95,14 @@
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                            <label for="email"
+                                                   class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                                             <div class="col-md-7">
-                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email">
+                                                <input id="email" type="email"
+                                                       class="form-control @error('email') is-invalid @enderror"
+                                                       name="email" value="{{ Auth::user()->email }}" required
+                                                       autocomplete="email">
 
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -110,7 +136,9 @@
                                     <label for="password" class="col-md-4 col-form-label text-md-end">Password</label>
 
                                     <div class="col-md-6 d-flex align-items-center">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password" autofocus>
+                                        <input id="password" type="password"
+                                               class="form-control @error('password') is-invalid @enderror"
+                                               name="password" required autocomplete="password" autofocus>
 
                                         <div class="form-check form-check-inline ms-2">
                                             <input type="checkbox" id="showPassword" class="form-check-input">
@@ -125,10 +153,13 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="new-password" class="col-md-4 col-form-label text-md-end">New password</label>
+                                    <label for="new-password" class="col-md-4 col-form-label text-md-end">New
+                                        password</label>
 
                                     <div class="col-md-6 d-flex align-items-center">
-                                        <input id="new-password" type="password" class="form-control @error('new-password') is-invalid @enderror" name="new-password" required autocomplete="new-password" autofocus>
+                                        <input id="new-password" type="password"
+                                               class="form-control @error('new-password') is-invalid @enderror"
+                                               name="new-password" required autocomplete="new-password" autofocus>
 
                                         <div class="form-check form-check-inline ms-2">
                                             <input type="checkbox" id="showNewPassword" class="form-check-input">
@@ -143,10 +174,14 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="new-password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                                    <label for="new-password-confirm"
+                                           class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
-                                    <div class="col-md-6">
-                                        <input id="new-password-confirm" type="password" class="form-control @error('new-password-confirm') is-invalid @enderror" name="new-password-confirm" required autocomplete="new-password-confirm" autofocus>
+                                    <div class="col-md-5 pe-4">
+                                        <input id="new-password-confirm" type="password"
+                                               class="form-control @error('new-password-confirm') is-invalid @enderror"
+                                               name="new-password-confirm" required autocomplete="new-password-confirm"
+                                               autofocus>
                                         @error('new-password-confirm')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id')->primary();
             $table->foreignId('user_id')->constrained('users');
+            $table->longText('title')->nullable(false);
             $table->string('path')->nullable(false);
             $table->longText('description')->nullable();
             $table->timestamps();

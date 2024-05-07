@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Image;
 
 class HomeController extends Controller
 {
@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $images = Image::orderByDesc('created_at')->paginate(3);
+        return view('home', [
+            'images' => $images
+        ]);
     }
 }
