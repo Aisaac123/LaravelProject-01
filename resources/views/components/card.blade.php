@@ -13,7 +13,7 @@
                         <p class="mt-3 px-2 text-muted"><strong>{{'@'.$image->user->nickname}}</strong></p>
                     </div>
                         <div class="d-flex">
-                            <p class="mt-3 px-2"><strong>{{$image->user->name . ' ' . $image->user->surname}}</strong></p>
+                            <p class="mt-3 px-3"><strong>{{$image->user->name . ' ' . $image->user->surname}}</strong></p>
                         </div>
                 </div>
             </div>
