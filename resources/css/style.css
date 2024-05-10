@@ -349,3 +349,10 @@ form .image_card {
 .comment-icon:hover img:last-child {
     opacity: 1;
 }
+
+body {
+    background-image: url("/public/shared/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -47,10 +48,22 @@ class ImageController extends Controller
         return view('image.detail', ['image' => $image]);
     }
     public function favorites(){
-        $favoritesImages = Auth::user()->likes->map(function ($like) {
+        $favoritesImages = Auth::user()->likes->sortByDesc('created_at')->map(function ($like) {
             return $like->image;
         });
-        return view('home', ['images'=>$favoritesImages])->with('status', 'Favorites Images!!');
+
+        $perPage = 3;
+        $page = LengthAwarePaginator::resolveCurrentPage() ?: 1;
+
+        $favoritesImages = new LengthAwarePaginator(
+            $favoritesImages->forPage($page, $perPage),
+            $favoritesImages->count(),
+            $perPage,
+            $page,
+            ['path' => LengthAwarePaginator::resolveCurrentPath()]
+        );
+
+        return view('home', ['images' => $favoritesImages])->with('status', 'Favorites Images!!');
     }
 
     public function delete($id){

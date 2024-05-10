@@ -9,7 +9,7 @@
             </div>
         </div>
     @else
-        @foreach($user->likes as $key => $like)
+        @foreach($user->likesPaginate() as $key => $like)
             <div class="row comment-row">
                 <div class="col col-md-8 d-flex justify-content-start">
                     <div class="d-flex justify-content-start">

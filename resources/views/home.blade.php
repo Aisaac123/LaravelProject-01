@@ -17,6 +17,7 @@
                 @endif
                 <div class="clearfix"></div>
             </div>
+            <div class="d-flex justify-content-center">{{ $images->links() }}</div>
         </div>
     </div>
 @endsection

@@ -21,7 +21,7 @@
                                 @endif
                             </h4>
                         </div>
-                        <div class="card ">
+                        <div class="">
                             <div class="card-body d-flex align-items-center justify-content-center">
                                 @if($user->images->isEmpty())
                                     <div class="row comment-row">
@@ -31,13 +31,15 @@
                                     </div>
                                 @else
                                 <div class="">
-                                    @component('components.posts.cards.card-list.card-list', ['images' => $user->images, 'showdesc' => false])
+                                    @component('components.posts.cards.card-list.card-list', ['images' => $user->imagesPaginate(), 'showdesc' => false])
                                     @endcomponent
                                     <div class="clearfix"></div>
                                 </div>
                                 @endif
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center ">{{ $user->imagesPaginate()->links() }}</div>
+
                     </div>
 
                     <div class="col-md-5">
@@ -55,6 +57,7 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center mt-4">{{ $user->likesPaginate()->links() }}</div>
                     </div>
                 </div>
 

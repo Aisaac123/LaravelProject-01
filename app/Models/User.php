@@ -53,4 +53,11 @@ class User extends Authenticatable
     public function images(){
         return $this->hasMany(Image::class)->orderBy('created_at', 'desc');
     }
+    public function likesPaginate(){
+        return $this->hasMany(Like::class)->paginate(10, ['*'], 'likesPage');
+    }
+
+    public function imagesPaginate(){
+        return $this->hasMany(Image::class)->orderBy('created_at', 'desc')->paginate(2, ['*'], 'imagesPage');
+    }
 }
