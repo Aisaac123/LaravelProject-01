@@ -21,4 +21,5 @@ class Like extends Model
     {
         return $this->belongsTo(Image::class, 'image_id');
     }
+
 }

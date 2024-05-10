@@ -47,4 +47,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+    public function images(){
+        return $this->hasMany(Image::class)->orderBy('created_at', 'desc');
+    }
 }

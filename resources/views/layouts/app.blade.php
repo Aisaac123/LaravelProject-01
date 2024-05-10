@@ -13,15 +13,21 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss','resources/css/style.css' , 'resources/js/app.js', 'resources/js/PasswordChecks.js', 'resources/js/PreviewUploadPhoto.js', 'resources/js/Likes.js'])
+    @vite(['resources/sass/app.scss','resources/css/style.css' , 'resources/js/app.js',
+ 'resources/js/PasswordChecks.js', 'resources/js/PreviewUploadPhoto.js',
+  'resources/js/Likes.js', 'resources/js/CardComments.js'])
+
 </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Devstagram On Laravel
-            </a>
+        <div class="container ">
+            <div class="app-title">
+                <a class="navbar-brand animated-link fw-bold" href="{{ url('/') }} ">
+                    Devstagram On Laravel
+                </a>
+            </div>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -40,42 +46,44 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link animated-link fw-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <li class="nav-item ">
+                                <a class="nav-link animated-link fw-bolder" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
-
                         <li class="nav-item mx-2">
-                            <a href="{{ route('home') }}" class="nav-link"><strong>Home</strong></a>
+                            <a href="{{ route('image.favorites') }}" class="nav-link animated-link"><strong>Favorites</strong></a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="{{ route('home') }}" class="nav-link animated-link"><strong>Home</strong></a>
                         </li>
 
                         <li class="nav-item mx-2">
-                            <a href="{{ route('image.create') }}" class="nav-link"> <strong>Upload image</strong></a>
+                            <a href="{{ route('image.create') }}" class="nav-link animated-link"> <strong>Upload image</strong></a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <strong>{{ Auth::user()->nickname }}</strong>
-                            </a>
-
+                            <div class="app-title">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle animated-link" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>{{ Auth::user()->nickname }}</strong>
+                                </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item" href="{{ route('home') }}">
+                                <a class="dropdown-item animated-link " href="{{route('user.profile', ['user_id' => Auth::user()])}}">
                                     My Profile
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                <a class="dropdown-item animated-link" href="{{ route('user.edit-profile') }}">
                                     Edit Profile
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item animated-link-logout" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -85,12 +93,13 @@
                                     @csrf
                                 </form>
                             </div>
+                            </div>
                         </li>
                         @if(Auth::user()->image)
                             <li class="nav-item ">
-                                <a href="{{ route('user.profile') }}">
-                                    @component('components.profile_image', [
-                                        'route' => route('user.image', ['filename' => Auth::user()->image])])
+                                <a href="{{ route('user.edit-profile') }}">
+                                    @component('components.images.profile_image', [
+                                        'user' => Auth::user()])
                                     @endcomponent
                                 </a>
                             </li>

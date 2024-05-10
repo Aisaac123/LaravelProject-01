@@ -9,12 +9,13 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                @component('components.card-list', ['images' => $images, 'showdescs' => false])
-                @endcomponent
+                @if($images->isEmpty())
+                    <h2><strong>Nothing to show here...</strong></h2>
+                @else
+                        @component('components.posts.cards.card-list.card-list', ['images' => $images, 'showdesc' => false])
+                        @endcomponent
+                @endif
                 <div class="clearfix"></div>
-            </div>
-            <div class="d-flex justify-content-center mt-4">
-                {{$images->links()}}
             </div>
         </div>
     </div>

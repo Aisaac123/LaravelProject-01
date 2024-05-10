@@ -10,13 +10,13 @@ class Image extends Model
 {
     protected $table = 'images';
 
-    
+
 
     // One-to-Many Relation
 
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
 
     }
     public function likes() : HasMany
@@ -31,5 +31,7 @@ class Image extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
+    public function hasLikeFrom($user): bool{
+        return $this->likes()->where('user_id',$user->id)->exists();
+    }
 }

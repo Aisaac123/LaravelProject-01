@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id')->primary();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('image_id')->constrained('images');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('image_id')->constrained('images')->onDelete('cascade');
             $table->longText('body')->nullable(false);
             $table->timestamps();
         });
 
         Schema::create('likes', function (Blueprint $table) {
             $table->bigIncrements('id')->primary();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('image_id')->constrained('images');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('image_id')->constrained('images')->onDelete('cascade');
             $table->timestamps();
+            $table->unique(['user_id', 'image_id']);
         });
     }
 

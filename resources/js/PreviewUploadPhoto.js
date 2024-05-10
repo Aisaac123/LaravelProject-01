@@ -12,3 +12,4 @@ document.getElementById('title').addEventListener('input', function(e) {
 document.getElementById('description').addEventListener('input', function(e) {
     document.getElementById('descPreview').innerText = this.value;
 });
+

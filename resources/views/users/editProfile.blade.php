@@ -19,10 +19,7 @@
                                 <div class="row">
                                     <div class="col">
                                         @if(Auth::user()->image)
-                                            @component('components.profile_image', ['route' => route('user.image', ['filename' => Auth::user()->image])])
-                                            @endcomponent
-                                        @else
-                                            @component('components.profile_image', ['route' => "null"])
+                                            @component('components.images.profile_image', ['user' => Auth::user()])
                                             @endcomponent
                                         @endif
                                         <div class="row mb-3">
@@ -118,7 +115,7 @@
 
                                 <div class="row mb-0 justify-content-center align-content-center align-items-center">
                                     <div class="text-center mt-3">
-                                        <button type="submit" class="btn btn-primary align-items-center mt-2">
+                                        <button type="submit" class="btn btn-dark align-items-center mt-2">
                                             Change info
                                         </button>
                                     </div>
@@ -192,7 +189,7 @@
 
                                 <div class="row mb-0 justify-content-center">
                                     <div class="text-center mt-3">
-                                        <button type="submit" class="btn btn-primary mt-2">
+                                        <button type="submit" class="btn btn-dark mt-2">
                                             Change Password
                                         </button>
                                     </div>

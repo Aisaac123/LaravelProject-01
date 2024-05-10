@@ -46,4 +46,19 @@ class ImageController extends Controller
         $image = Image::find($id);
         return view('image.detail', ['image' => $image]);
     }
+    public function favorites(){
+        $favoritesImages = Auth::user()->likes->map(function ($like) {
+            return $like->image;
+        });
+        return view('home', ['images'=>$favoritesImages])->with('status', 'Favorites Images!!');
+    }
+
+    public function delete($id){
+        $image = Image::find($id);
+        if ($image->user_id === Auth::id()){
+            $image->delete();
+            return redirect()->back()->with(['success' => 'Your post has been deleted successfully!']);
+        }
+        return redirect()->back()->with(['success' => 'Cannot delete this message!']);
+    }
 }

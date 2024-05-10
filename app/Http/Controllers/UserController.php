@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,8 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    public function profile(){
-        return view('users.profile');
+    public function editProfile(){
+        return view('users.editProfile');
     }
 
     public function update(Request $request)
@@ -55,7 +56,7 @@ class UserController extends Controller
         }
         $user->update();
         //redirect
-        return redirect()->route('user.profile')->with(['message' => 'You\'r personal info has been updated! :)']);
+        return redirect()->route('user.edit-profile')->with(['message' => 'You\'r personal info has been updated! :)']);
     }
 
     public function updatePassword(Request $request)
@@ -93,5 +94,10 @@ class UserController extends Controller
 
     public function getImageFromStorage(string $filename){
         return new Response(Storage::disk('users')->get($filename), 201) ;
+    }
+
+    public function usersProfile($id){
+        $user = User::find($id);
+        return view('users.profiles', ['user' => $user]);
     }
 }
