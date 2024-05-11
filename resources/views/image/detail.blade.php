@@ -9,7 +9,8 @@
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-9 mt-4">
-                <h4 id="gradient-text" class="animated-link" style="cursor: default"><strong>People liked this!!</strong></h4>
+                <h4 id="gradient-text" class="animated-link" style="cursor: default"><strong>People liked
+                        this!!</strong></h4>
                 <div class="card">
                     <div class="card-body">
                         @component('components.posts.cards.image-likes-card', ['image' => $image])

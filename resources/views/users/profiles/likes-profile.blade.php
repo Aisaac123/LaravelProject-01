@@ -18,13 +18,8 @@
                             <strong>
                                 {{$like->image->title}}
                             </strong>
-                        @if(Auth::user()->id !== $like->image->user->id)
-                            <img src="{{asset('shared/like-icon.png')}}" alt=""
-                                 style=" width: 24px; height: 24px; margin-left: 3px;">
-                        @else
-                            <img src="{{asset('shared/no-like-icon.png')}}" alt=""
-                                 style=" width: 24px; height: 24px; margin-left: 3px;">
-                        @endif
+                                <img src="{{asset('shared/like-icon.png')}}" alt=""
+                                     style=" width: 24px; height: 24px; margin-left: 3px;">
                         </a>
                     </div>
                 </div>

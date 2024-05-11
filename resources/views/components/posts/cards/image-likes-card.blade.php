@@ -15,14 +15,10 @@
                                  style="width: 40px; height: 40px; object-fit: cover;"
                             >
                         @endif
-                        @if($like->user->id !== Auth::user()->id)
-                             <p class="mt-3 px-2 text-muted" style="font-size: medium"><strong>{{'@'.$like->user->nickname}}: gave you a like!</strong></p>
-                                <img src="{{asset('shared/like-icon.png')}}" alt="" style=" width: 24px; height: 24px; margin-top: 15px;">
-                        @else
-                            <p class="mt-3 px-2 text-muted" style="font-size: medium"><strong>{{'@'.$like->user->nickname}}: gave you a like!</strong></p>
-                                <img src="{{asset('shared/no-like-icon.png')}}" alt="" style=" width: 24px; height: 24px; margin-top: 15px;">
-
-                        @endif
+                            <p class="mt-3 px-2 text-muted" style="font-size: medium">
+                                <strong>{{'@'.$like->user->nickname}}: gave you a like!</strong></p>
+                            <img src="{{asset('shared/like-icon.png')}}" alt=""
+                                 style=" width: 24px; height: 24px; margin-top: 15px;">
                     </div>
                 </div>
                 <div class="col col-md-2 ">

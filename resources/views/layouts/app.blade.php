@@ -46,59 +46,65 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link animated-link fw-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link animated-link fw-bold"
+                                   href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item ">
-                                <a class="nav-link animated-link fw-bolder" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link animated-link fw-bolder"
+                                   href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item mx-2">
-                            <a href="{{ route('image.favorites') }}" class="nav-link animated-link"><strong>Favorites</strong></a>
+                            <a href="{{ route('image.favorites') }}"
+                               class="nav-link animated-link"><strong>Favorites</strong></a>
                         </li>
                         <li class="nav-item mx-2">
                             <a href="{{ route('home') }}" class="nav-link animated-link"><strong>Home</strong></a>
                         </li>
 
                         <li class="nav-item mx-2">
-                            <a href="{{ route('image.create') }}" class="nav-link animated-link"> <strong>Upload image</strong></a>
+                            <a href="{{ route('image.create') }}" class="nav-link animated-link"> <strong>Upload
+                                    image</strong></a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <div class="app-title">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle animated-link" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle animated-link" href="#"
+                                   role="button"
                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <strong>{{ Auth::user()->nickname }}</strong>
                                 </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item animated-link " href="{{route('user.profile', ['user_id' => Auth::user()])}}">
-                                    My Profile
-                                </a>
+                                    <a class="dropdown-item animated-link "
+                                       href="{{route('user.profile', ['user_id' => Auth::user()])}}">
+                                        My Profile
+                                    </a>
 
-                                <a class="dropdown-item animated-link" href="{{ route('user.edit-profile') }}">
-                                    Edit Profile
-                                </a>
+                                    <a class="dropdown-item animated-link" href="{{ route('user.edit-profile') }}">
+                                        Edit Profile
+                                    </a>
 
-                                <a class="dropdown-item animated-link-logout" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                                    <a class="dropdown-item animated-link-logout" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                                        {{ __('Logout') }}
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
                             </div>
                         </li>
                         @if(Auth::user()->image)
                             <li class="nav-item ">
                                 <a href="{{ route('user.edit-profile') }}">
-                                    @component('components.images.profile_image', [
+                                    @component('image.profile_image', [
                                         'user' => Auth::user()])
                                     @endcomponent
                                 </a>

@@ -1,15 +1,16 @@
-<div class="card mb-4">
+<div class="card mb-4 " style="margin: 0; padding: 0;">
     <div class="card-header">
         <div class="row">
             <div class="col">
                 <div class="d-flex justify-content-start">
                     @if($image->user->image)
-                        @component('components.images.profile_image', ['user' => $image->user])
+                        @component('image.profile_image', ['user' => $image->user])
                         @endcomponent
                     @endif
-                    <div class="d-flex border-end">
-                        <a href="{{route('user.profile', ['user_id' => $image->user->id])}}" style="text-decoration: none" class="mt-3 px-2 text-muted animated-link-profile">
-                            <strong>{{'@'.$image->user->nickname}}</strong>
+                    <div class="d-flex border-end names">
+                        <a href="{{route('user.profile', ['user_id' => $image->user->id])}}"
+                           style="text-decoration: none" class="mt-3 px-2 text-muted">
+                            <p class="animated-link-profile"><strong>{{'@'.$image->user->nickname}}</strong></p>
                         </a>
                     </div>
                     <div class="d-flex">
@@ -42,14 +43,17 @@
                                 @if($image->user->id === Auth::user()->id)
                                     <div class="trash-icon" style="margin-right: 32px;">
                                         <a href="{{route('image.delete', ['id' => $image->id])}}">
-                                            <img src="{{asset('/shared/trash_hover.png')}}" alt="" style="cursor: pointer">
+                                            <img src="{{asset('/shared/trash_hover.png')}}" alt=""
+                                                 style="cursor: pointer">
                                             <img src="{{asset('/shared/trash.png')}}" alt="" style="cursor: pointer">
                                         </a>
                                     </div>
                                 @endif
                                 <div class="comment-icon">
-                                    <img class="comment" src="{{asset('shared/comment.png')}}" alt="" style="cursor: pointer; margin-left: -44px;">
-                                    <img class="comment" src="{{asset('shared/comment_hover.png')}}" alt="" style="cursor: pointer; margin-left: -44px;">
+                                    <img class="comment" src="{{asset('shared/comment.png')}}" alt=""
+                                         style="cursor: pointer; margin-left: -44px;">
+                                    <img class="comment" src="{{asset('shared/comment_hover.png')}}" alt=""
+                                         style="cursor: pointer; margin-left: -44px;">
                                 </div>
                                 @component('components.posts.comments.likes&comments.likes', ['image' => $image])
                                 @endcomponent
@@ -83,14 +87,17 @@
                                 @if($image->user->id === Auth::user()->id)
                                     <div class="trash-icon" style="margin-right: 32px;">
                                         <a href="{{route('image.delete', ['id' => $image->id])}}">
-                                            <img src="{{asset('/shared/trash_hover.png')}}" alt="" style="cursor: pointer">
+                                            <img src="{{asset('/shared/trash_hover.png')}}" alt=""
+                                                 style="cursor: pointer">
                                             <img src="{{asset('/shared/trash.png')}}" alt="" style="cursor: pointer">
                                         </a>
                                     </div>
                                 @endif
                                 <div class="comment-icon">
-                                    <img class="comment" src="{{asset('shared/comment.png')}}" alt="" style="cursor: pointer; margin-left: -54px;">
-                                    <img class="comment" src="{{asset('shared/comment_hover.png')}}" alt="" style="cursor: pointer; margin-left: -54px;">
+                                    <img class="comment" src="{{asset('shared/comment.png')}}" alt=""
+                                         style="cursor: pointer; margin-left: -54px;">
+                                    <img class="comment" src="{{asset('shared/comment_hover.png')}}" alt=""
+                                         style="cursor: pointer; margin-left: -54px;">
                                 </div>
                                 @component('components.posts.comments.likes&comments.likes', ['image' => $image])
                                 @endcomponent
@@ -114,7 +121,7 @@
                 </p>
             </div>
         @endif
-            @component('components.posts.comments.comment-box', ['image' => $image])
-            @endcomponent
+        @component('components.posts.comments.comment-box', ['image' => $image])
+        @endcomponent
     </div>
 </div>

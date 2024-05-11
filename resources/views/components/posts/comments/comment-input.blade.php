@@ -3,7 +3,8 @@
     <input type="hidden" value="{{$image_id}}" name="image-id">
     <div class="row mb-3 mt-2">
         <div class="col">
-            <textarea class="form-control @error('comment-text') is-invalid @enderror" name="comment-text" placeholder="So beautiful!" required></textarea>
+            <textarea class="form-control @error('comment-text') is-invalid @enderror" name="comment-text"
+                      placeholder="So beautiful!" required></textarea>
             @error('comment-text')
             <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

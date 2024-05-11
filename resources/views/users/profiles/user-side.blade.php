@@ -1,9 +1,9 @@
 <div class="text-start mt-4">
     <div class="mb-4">
         @if($user->image)
-            @component('components.images.profile_image', ['user' => $user])
+            @component('image.profile_image', ['user' => $user])
             @endcomponent
-         @endif
+        @endif
     </div>
     <h3 class="animated-link-profile mb-4" style="cursor: default"><strong>{{'@'.$user->nickname}}</strong></h3>
     <div class="names">

@@ -13,10 +13,11 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request){
-        $this->validate($request,[
+    public function store(Request $request)
+    {
+        $this->validate($request, [
             'image-id' => ['required', 'integer', 'min:1'],
-            'comment-text'=> ['required', 'string'],
+            'comment-text' => ['required', 'string'],
         ]);
         $user_id = Auth::id();
         $image_id = $request->input('image-id');
@@ -32,9 +33,11 @@ class CommentController extends Controller
         return redirect()->back()->with(['success' => 'Your comment has been post successfully!'
         ]);
     }
-    public function delete($id){
+
+    public function delete($id)
+    {
         $comment = Comment::find($id);
-        if ($comment->user_id === Auth::id()){
+        if ($comment->user_id === Auth::id()) {
             $comment->delete();
             return redirect()->back()->with(['success' => 'Your comment has been deleted successfully!']);
         }

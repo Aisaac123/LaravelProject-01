@@ -12,7 +12,8 @@ class LikeController extends Controller
         $this->middleware('auth');
     }
 
-    public function like($image_id){
+    public function like($image_id)
+    {
         $user = Auth::user();
         $hasLike = $user?->likes->where('image_id', $image_id)->first();
         if ($hasLike) {
@@ -26,7 +27,9 @@ class LikeController extends Controller
         $like->save();
         return redirect()->back();
     }
-    public function unlike($image_id){
+
+    public function unlike($image_id)
+    {
         $user = Auth::user();
         $hasLike = $user?->likes->where('image_id', $image_id)->first();
         if (!$hasLike) {

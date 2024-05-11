@@ -35,6 +35,26 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class)->orderBy('created_at', 'desc');
+    }
+
+    public function likesPaginate()
+    {
+        return $this->hasMany(Like::class)->paginate(10, ['*'], 'likesPage');
+    }
+
+    public function imagesPaginate()
+    {
+        return $this->hasMany(Image::class)->orderBy('created_at', 'desc')->paginate(2, ['*'], 'imagesPage');
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -46,18 +66,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-    public function likes(){
-        return $this->hasMany(Like::class);
-    }
-    public function images(){
-        return $this->hasMany(Image::class)->orderBy('created_at', 'desc');
-    }
-    public function likesPaginate(){
-        return $this->hasMany(Like::class)->paginate(10, ['*'], 'likesPage');
-    }
-
-    public function imagesPaginate(){
-        return $this->hasMany(Image::class)->orderBy('created_at', 'desc')->paginate(2, ['*'], 'imagesPage');
     }
 }

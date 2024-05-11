@@ -19,7 +19,7 @@
                                 <div class="row">
                                     <div class="col">
                                         @if(Auth::user()->image)
-                                            @component('components.images.profile_image', ['user' => Auth::user()])
+                                            @component('image.profile_image', ['user' => Auth::user()])
                                             @endcomponent
                                         @endif
                                         <div class="row mb-3">

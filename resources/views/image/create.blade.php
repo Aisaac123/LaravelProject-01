@@ -87,7 +87,7 @@
                                     <div class="text-center mb-3 pe-4">
                                         <strong><h5 class="col-md-10 ps-2">Preview</h5></strong>
                                     </div>
-                                    @component('components.images.image_card_upload')
+                                    @component('image.image_card_upload')
                                     @endcomponent
                                 </div>
                             </div>

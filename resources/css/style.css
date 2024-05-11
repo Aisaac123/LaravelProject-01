@@ -9,6 +9,16 @@ form .image_card {
     overflow: hidden;
 }
 
+.image-search img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 10px 15px 10px 3px;
+    border-radius: 100%;
+    border: 2px solid gray;
+    overflow: hidden;
+}
+
 .navbar .image_card {
     width: 40px;
     height: 40px;
@@ -19,6 +29,7 @@ form .image_card {
     border: 1px solid gray;
 
 }
+
 .card-header .image_card {
     width: 55px;
     height: 55px;
@@ -29,6 +40,7 @@ form .image_card {
     border: 1px solid gray;
 
 }
+
 .profile-header .image_card {
     width: 294px;
     height: 294px;
@@ -38,6 +50,7 @@ form .image_card {
     margin-left: -16px;
     border: 2px solid gray;
 }
+
 #upload_image_card {
     display: flex;
     flex-direction: column;
@@ -47,6 +60,7 @@ form .image_card {
     margin-bottom: 35px;
     margin-left: 35px;
 }
+
 #imagePreview {
     flex-grow: 1;
     overflow: hidden;
@@ -54,7 +68,8 @@ form .image_card {
     height: 100%;
     object-fit: cover;
 }
-#titleCard{
+
+#titleCard {
     margin-top: 7px;
     margin-bottom: -6px;
     margin-left: 4px;
@@ -68,17 +83,20 @@ form .image_card {
     font-weight: normal;
     font-size: medium;
 }
+
 .likes img {
     width: 32px;
     height: 32px;
     margin-right: 10px;
 }
+
 .profile-like .likes img {
     width: 32px;
     height: 32px;
     margin-right: 10px;
     margin-left: -15px;
 }
+
 .comments-count {
     font-size: small;
     font-weight: lighter;
@@ -87,6 +105,7 @@ form .image_card {
     margin-right: 34px;
 
 }
+
 .likes-count {
     font-size: small;
     font-weight: lighter;
@@ -95,7 +114,8 @@ form .image_card {
     margin-right: 22px;
 
 }
-.likes-comments-container{
+
+.likes-comments-container {
 
     margin-bottom: -7px;
 }
@@ -105,6 +125,7 @@ form .image_card {
     color: lightslategray;
     transition: color 0.25s ease-in-out, font-size 0.25s ease-in-out;
 }
+
 #gradient-text:hover {
     background: linear-gradient(to right, hotpink, lightskyblue);
     -webkit-background-clip: text;
@@ -124,6 +145,7 @@ form .image_card {
     color: lightslategray;
     transition: color 0.25s ease-in-out, font-size 0.25s ease-in-out;
 }
+
 .animated-link:hover {
     background: linear-gradient(to left, hotpink, cornflowerblue);
     -webkit-background-clip: text;
@@ -131,11 +153,25 @@ form .image_card {
     font-size: larger;
 }
 
+.search-box .search-title .animated-link {
+    text-decoration: none;
+    color: lightslategray;
+    transition: color 0.25s ease-in-out, font-size 0.25s ease-in-out;
+}
+
+.search-box:hover .search-title .animated-link {
+    background: linear-gradient(to left, deeppink, deepskyblue);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: x-large;
+}
+
 .animated-link-logout {
     text-decoration: none;
     color: lightslategray;
     transition: color 0.25s ease-in-out, font-size 0.25s ease-in-out;
 }
+
 .animated-link-logout:hover {
     background: linear-gradient(to left, coral, darkred);
     -webkit-background-clip: text;
@@ -146,11 +182,11 @@ form .image_card {
 .app-title .animated-link {
     text-decoration: none;
     color: dimgray;
-    transition: color 0.25s ease-in-out, font-size 0.25s ease-in-out;
+    transition: color 0.4s ease-in-out, font-size 0.4s ease-in-out;
 }
 
 .app-title .animated-link:hover {
-    background: linear-gradient(to left, deeppink, blue);
+    background: linear-gradient(to left, deeppink, deepskyblue);
     -webkit-background-clip: text;
     color: transparent;
     font-size: large;
@@ -167,6 +203,7 @@ form .image_card {
     -webkit-background-clip: text;
     color: transparent;
 }
+
 .names .animated-link-profile {
     text-decoration: none;
     color: black;
@@ -188,28 +225,48 @@ form .image_card {
 }
 
 @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-moz-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-o-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-ms-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .animated-comment-box {
@@ -228,10 +285,12 @@ form .image_card {
     border-radius: 100%;
     padding-left: -10px;
 }
+
 #comment-text {
     overflow-wrap: break-word;
     word-break: break-word;
 }
+
 #comment-container p {
     overflow-wrap: break-word;
     word-break: break-word;
@@ -243,6 +302,7 @@ form .image_card {
     width: 32px;
     height: 32px;
 }
+
 .trash-icon img {
     position: absolute;
     width: 100%;
@@ -250,6 +310,7 @@ form .image_card {
     transition: opacity 0.3s ease-in-out;
     margin-left: -25px;
 }
+
 .trash-icon img:first-child {
     z-index: 1;
 }
@@ -271,6 +332,7 @@ form .image_card {
     width: 32px;
     height: 32px;
 }
+
 .detail-delete .trash-icon img {
     position: absolute;
     width: 100%;
@@ -278,6 +340,7 @@ form .image_card {
     transition: opacity 0.3s ease-in-out;
     margin-left: -48px;
 }
+
 .detail-delete .trash-icon img:first-child {
     z-index: 1;
 }
@@ -301,12 +364,14 @@ form .image_card {
     height: 32px;
     margin-right: 10px;
 }
+
 .like-icon img {
     position: absolute;
     width: 100%;
     height: 100%;
     transition: opacity 0.3s ease-in-out;
 }
+
 .like-icon img:first-child {
     z-index: 1;
 }
@@ -322,11 +387,13 @@ form .image_card {
 .like-icon:hover img:last-child {
     opacity: 1;
 }
+
 .like-icon {
     position: relative;
     width: 32px;
     height: 32px;
 }
+
 .comment-icon img {
     position: absolute;
     width: 32px;
@@ -334,6 +401,7 @@ form .image_card {
     transition: opacity 0.3s ease-in-out;
     margin-right: 64px;
 }
+
 .comment-icon img:first-child {
     z-index: 1;
 }

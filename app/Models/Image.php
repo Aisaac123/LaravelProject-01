@@ -11,7 +11,6 @@ class Image extends Model
     protected $table = 'images';
 
 
-
     // One-to-Many Relation
 
     public function comments(): HasMany
@@ -19,19 +18,22 @@ class Image extends Model
         return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
 
     }
-    public function likes() : HasMany
-    {
-        return $this->hasMany(Like::class);
-
-    }
-
-    // Many-to-One Relation
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function hasLikeFrom($user): bool{
-        return $this->likes()->where('user_id',$user->id)->exists();
+
+    // Many-to-One Relation
+
+    public function hasLikeFrom($user): bool
+    {
+        return $this->likes()->where('user_id', $user->id)->exists();
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class);
+
     }
 }
