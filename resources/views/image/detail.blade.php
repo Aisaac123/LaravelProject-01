@@ -9,7 +9,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-9 mt-4">
-                <h4 id="gradient-text" class="animated-link" style="cursor: default"><strong>People liked
+                <h4 id="gradient-text" class="animated-link" style="cursor: default"><strong>People who liked
                         this!!</strong></h4>
                 <div class="card">
                     <div class="card-body">
